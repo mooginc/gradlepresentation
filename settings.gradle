@@ -1,0 +1,1 @@
+include 'ant', 'custom', 'dependencies', 'dynamic', 'exec', 'functions', 'phases', 'platform', 'copy', 'phasesCreateDelete'

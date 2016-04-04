@@ -1,0 +1,21 @@
+class MSBuild extends DefaultTask {
+    @InputFile
+    File projectFile
+
+    @Input
+    def target
+
+    @TaskAction
+    def build () {
+        project.exec {
+            commandLine "MSBuild.exe", projectFile.getAbsolutePath(), "/t:${target}", "/verbosity:m"
+        }
+    }
+}
+
+task build (type: MSBuild) {
+    projectFile = file("project.vcxproj")
+    target = "HelloWorld"
+}
+
+defaultTasks "build"

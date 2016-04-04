@@ -1,0 +1,30 @@
+task clean(type: Delete) {
+    delete "build"
+}
+
+task copyDir(type: Copy, dependsOn: clean) {
+    from "foo"
+    from "bar"
+ 
+    into "build"
+}
+
+task unzip (type: Copy, dependsOn: clean) {
+    def files = zipTree ("frobozz.zip")
+    from files
+    into "build"
+}
+
+task moreAdvanced (type: Copy, dependsOn: clean) {
+    from('Config') {
+        include 'foo/*'
+        fileMode = 0755
+        rename ('virus.exe', 'porn.png')
+    }
+
+    into "build"
+}
+
+task all(dependsOn:["copyDir", "unzip", "moreAdvanced"]){}
+
+defaultTasks "copyDir", "unzip", "moreAdvanced"

@@ -1,0 +1,24 @@
+ext {
+    TARGETS= ["A", "B", "C"]
+}
+
+TARGETS.each () { target ->
+    //Create build tasks
+    task "build_${target}" << {
+    	println("build_${target}")
+    }
+
+    task "test_${target}" << {
+    	println("test_${target}")
+    }
+}
+
+task buildProjects () {
+    dependsOn tasks.findAll { task -> task.name.startsWith('build_') }
+}
+
+task testProjects () {
+    dependsOn tasks.findAll { task -> task.name.startsWith('test_') }
+}
+
+defaultTasks "buildProjects", "testProjects"

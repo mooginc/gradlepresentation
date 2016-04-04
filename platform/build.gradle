@@ -1,0 +1,22 @@
+task helloLinux {
+    onlyIf {
+        System.properties['os.name'].toLowerCase().contains('linux')
+    }
+    
+    doLast {
+        println("Hello linux.")
+    }
+}
+
+task helloWindows << {
+    println("Hello windows.")
+}
+
+helloWindows.onlyIf {
+    System.properties['os.name'].toLowerCase().contains('windows')
+}
+
+task hello(dependsOn: [helloLinux , helloWindows])
+
+
+defaultTasks "hello"

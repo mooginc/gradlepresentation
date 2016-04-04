@@ -1,0 +1,13 @@
+def Frobozz(who, where) {
+    println("${who} went to ${where}'s place.")
+}
+
+task fooBar << {
+    Frobozz("Foo", "Bar")
+}
+
+task barFoo << {
+    Frobozz("Bar", "Foo")
+}
+
+defaultTasks "fooBar", "barFoo"

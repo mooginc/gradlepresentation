@@ -1,0 +1,20 @@
+task A << {println("task a")}
+task B << {println("task b")}
+
+task C (dependsOn:[A, B]) << {
+    println("task C")
+}
+
+task D () {
+    shouldRunAfter "A"
+    doLast {
+        println("task D")
+    }
+}
+
+task E () << {
+    println("task E")
+}
+E.shouldRunAfter "B"
+
+defaultTasks "E", "D", "C", "B", "A"

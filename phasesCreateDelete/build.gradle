@@ -1,0 +1,25 @@
+task clean(type: Delete) {
+    delete "foo" //Deleted during execution phase
+}
+
+task createNotWorking () {
+    outputs.dir file("foo")    
+    file("foo").mkdirs () //Created during configuration phase
+}
+
+task isNotWorking(dependsOn: createNotWorking) << {
+    assert !file("foo").exists ()
+}
+
+task createWorking () {
+    outputs.dir file("foo")
+    doLast {
+        file("foo").mkdirs () //Created during execution phase
+    }
+}
+
+task isWorking(dependsOn: createWorking) << {
+    assert file("foo").exists ()
+}
+
+defaultTasks "clean", "isNotWorking", "isWorking"

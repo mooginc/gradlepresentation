@@ -1,0 +1,17 @@
+task doStuff(type: Exec) {
+    workingDir "."
+    commandLine "cmd", "/c", "echo", "hello world"
+}
+
+task doStuffWithCustomEnvironment(type: Exec) {
+    commandLine "cmd", "/c", "echo", "%ABCD%"
+    environment = [ABCD: "aaBBccDD"]
+}
+
+task suppressStdOut(type: Exec) {
+    //Supply –-info command line argument to show it anyway 
+    logging.captureStandardOutput LogLevel.INFO
+    commandLine "cmd", "/c", "echo", "secret message"
+}
+
+defaultTasks "suppressStdOut", "doStuffWithCustomEnvironment", "doStuff"
