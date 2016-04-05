@@ -1,1 +1,2 @@
-include 'ant', 'custom', 'dependencies', 'dynamic', 'exec', 'functions', 'phases', 'platform', 'copy', 'phasesCreateDelete'
+include 'ant', 'custom', 'dependencies', 'dynamic', 'exec', 'functions', 'platform', 'copy', 'phasesCreateDelete'
+include 'Labs:HelloWorld', 'Labs:CopyFiles', 'Labs:ZipArchive', 'Labs:Download', 'Labs:BuildOrder'

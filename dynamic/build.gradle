@@ -21,4 +21,4 @@ task testProjects () {
     dependsOn tasks.findAll { task -> task.name.startsWith('test_') }
 }
 
-defaultTasks "buildProjects", "testProjects"
+task doIt(dependsOn: ["buildProjects", "testProjects"]) {}

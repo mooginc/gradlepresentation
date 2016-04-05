@@ -17,4 +17,4 @@ task E () << {
 }
 E.shouldRunAfter "B"
 
-defaultTasks "E", "D", "C", "B", "A"
+task doIt(dependsOn: ["E", "D", "C", "B", "A"]) {}

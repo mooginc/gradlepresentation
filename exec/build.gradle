@@ -14,4 +14,4 @@ task suppressStdOut(type: Exec) {
     commandLine "cmd", "/c", "echo", "secret message"
 }
 
-defaultTasks "suppressStdOut", "doStuffWithCustomEnvironment", "doStuff"
+task doIt(dependsOn: ["suppressStdOut", "doStuffWithCustomEnvironment", "doStuff"]) {}

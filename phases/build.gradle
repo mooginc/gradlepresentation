@@ -18,4 +18,4 @@ task testBoth {
     println '[F] This is executed during the configuration phase as well.'
 }
 
-defaultTasks "configured", "testBoth", "test"
+//task doIt(dependsOn: ["configured", "testBoth", "test"])

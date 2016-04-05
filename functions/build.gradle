@@ -10,4 +10,4 @@ task barFoo << {
     Frobozz("Bar", "Foo")
 }
 
-defaultTasks "fooBar", "barFoo"
+task doIt(dependsOn: ["fooBar", "barFoo"]){}

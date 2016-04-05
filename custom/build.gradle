@@ -13,9 +13,7 @@ class MSBuild extends DefaultTask {
     }
 }
 
-task build (type: MSBuild) {
+task doIt (type: MSBuild) {
     projectFile = file("project.vcxproj")
     target = "HelloWorld"
 }
-
-defaultTasks "build"

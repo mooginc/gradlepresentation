@@ -16,7 +16,4 @@ helloWindows.onlyIf {
     System.properties['os.name'].toLowerCase().contains('windows')
 }
 
-task hello(dependsOn: [helloLinux , helloWindows])
-
-
-defaultTasks "hello"
+task doIt(dependsOn: [helloLinux , helloWindows])

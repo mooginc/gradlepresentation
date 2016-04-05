@@ -22,4 +22,4 @@ task isWorking(dependsOn: createWorking) << {
     assert file("foo").exists ()
 }
 
-defaultTasks "clean", "isNotWorking", "isWorking"
+task doIt(dependsOn: ["clean", "isNotWorking", "isWorking"]) {}

@@ -4,6 +4,4 @@ task helloGradle << {
     println("Hello gradle.")
 }
 
-task helloAll(dependsOn: [helloGradle, helloAnt])
-
-defaultTasks "helloGradle", "helloAll"
+task doIt(dependsOn: [helloGradle, helloAnt])

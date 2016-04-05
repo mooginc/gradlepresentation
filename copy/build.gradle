@@ -25,6 +25,4 @@ task moreAdvanced (type: Copy, dependsOn: clean) {
     into "build"
 }
 
-task all(dependsOn:["copyDir", "unzip", "moreAdvanced"]){}
-
-defaultTasks "copyDir", "unzip", "moreAdvanced"
+task doIt(dependsOn:["copyDir", "unzip", "moreAdvanced"]){}
