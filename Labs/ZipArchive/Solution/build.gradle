@@ -1,0 +1,9 @@
+task clean(type: Delete) {
+    delete "build"
+}
+
+task doZip(type: Zip, dependsOn: clean) {
+    from "data"
+    baseName "archive"
+    destinationDir = file("build")
+}

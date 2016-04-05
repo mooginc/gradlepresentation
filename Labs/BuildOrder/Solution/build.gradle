@@ -1,0 +1,16 @@
+task C {}
+
+if(System.properties.reverse == "1") { //add -Dreverse=1 to command line
+    task B (dependsOn: C) << {}
+    task A (dependsOn: B) << {}
+}
+else if(System.properties.reverse == "2") { //add -Dreverse=2 to command line
+    task B {mustRunAfter C}
+    task A {mustRunAfter B}
+}
+else {
+    task B {}
+    task A {}
+}
+
+task all(dependsOn: [A, B, C]) {}

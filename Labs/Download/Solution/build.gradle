@@ -1,0 +1,23 @@
+def SOURCE = "http://www.thoughtcow.com/media/photologue/photos/chuck.jpg"
+def DESTINATION = file("image.jpg").getAbsolutePath()
+
+task clean(type: Delete) {
+    delete DESTINATION
+}
+
+task downloadGroovyStyle(dependsOn: clean){
+    outputs.file(DESTINATION)
+    doLast {
+        def f = new File(DESTINATION)
+
+        new URL(SOURCE).withInputStream { i ->
+            f.withOutputStream {
+                it << i
+            }
+        }
+    }
+}
+
+task downloadAntStyle(dependsOn: clean) << {
+    ant.get(src: SOURCE, dest: DESTINATION)
+}

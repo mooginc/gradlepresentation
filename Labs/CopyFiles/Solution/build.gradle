@@ -1,0 +1,20 @@
+task clean(type: Delete) {
+    delete "build", "build2"
+}
+
+task copyAll(type: Copy, dependsOn: clean){
+    from "data"
+    into "build"
+}
+
+task copyFoo(type: Copy, dependsOn: clean){
+    from "data"
+    into "build"
+    include "foo.txt"
+}
+
+task copyBar(type: Copy, dependsOn: copyFoo){
+    from "data"
+    into "build2"
+    include "bar.txt"
+}

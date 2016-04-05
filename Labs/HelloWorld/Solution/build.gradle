@@ -1,0 +1,19 @@
+task helloConfiguration () {
+    println("Hello world")
+}
+
+task helloExecution << {
+    println("Hello world")
+}
+
+task helloExecution2 () {
+    doLast {
+        println("Hello world")
+    }
+}
+
+task helloExecution3 () {
+    doFirst {
+        println("Hello world")
+    }
+}
